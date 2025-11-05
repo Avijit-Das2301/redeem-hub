@@ -1,36 +1,193 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔒 Unlock Rewards — Redeem System (MERN + Next.js)
 
-## Getting Started
+A complete **Redeem System** built using **Next.js, MongoDB, and NextAuth**, featuring **Role-Based Access Control** for Admins and Users.
 
-First, run the development server:
+Admins can generate redeem codes (common or unique), while users can redeem those codes to unlock rewards.  
+This project implements all features required for the **Technical Assignment (Stage 2)** using modern web development best practices.
+
+---
+
+## 🚀 Live Demo
+
+👉 **Live Site:** [https://redeem-hub.vercel.app/](https://redeem-hub.vercel.app/)
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Sign Up Page
+
+![Sign Up Page](/Screenshots/Sign%20Up%20Page.png)
+
+### 🏠 Sign In Page
+
+![Sign In Page](/Screenshots/Sign%20In%20Page.png)
+
+### 🏠 Redeem Page
+
+![Redeem Page](/Screenshots/Redeem%20Page.png)
+
+### 🏠 Admin Dashboard
+
+![Admin Dashboard](/Screenshots/Admin%20Dashboard.png)
+
+---
+
+## 🧠 Overview
+
+### 🎯 Features
+
+#### 👑 Admin Features
+
+- Generate **two types of redeem codes**:
+  - **Common Codes**: Redeemable by multiple users up to a set limit.
+  - **Unique Codes**: Redeemable only once by a single user.
+- Set **redemption limits** and **expiry dates**.
+- View **all generated codes** with:
+  - Type, Limit, Expiry, and Active/Expired Status.
+- View **complete redemption history**.
+- **Role-based authentication** using NextAuth.
+- Access restricted `/admin` dashboard with middleware protection.
+
+#### 🙋 User Features
+
+- Sign up or log in as a user.
+- Redeem codes through the `/redeem` page.
+- See **real-time feedback** for success or failure (e.g., expired, already redeemed, or limit reached).
+- Successful redemptions appear in admin **Redemption History**.
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer              | Technology                                  |
+| ------------------ | ------------------------------------------- |
+| **Frontend**       | Next.js 14 (App Router)                     |
+| **Backend**        | Next.js API Routes (Node.js + Express-like) |
+| **Database**       | MongoDB (via Mongoose ORM)                  |
+| **Authentication** | NextAuth.js (Credentials Provider + JWT)    |
+| **Styling**        | Tailwind CSS + ShadCN UI components         |
+| **Hosting**        | Vercel                                      |
+| **Language**       | JavaScript (TypeScript ready)               |
+
+---
+
+## 🧩 Role-Based Access
+
+- **Admin:** Can generate codes and view redemption data.
+- **User:** Can redeem codes only.
+- Protected routes ensure:
+  - `/admin` → Admins only
+  - `/redeem` → Logged-in users
+
+---
+
+## 🧪 Demo Credentials
+
+You can test the deployed app using the following accounts:
+
+### 👑 Admin Login
+
+```
+Email: admin@example.com
+Password: admin123
+```
+
+### 🙋 User Login
+
+```
+Email: user@example.com
+Password: user123
+```
+
+> You can also sign up as new users/admins through the provided signup forms.
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file in the root of your project (do **not** commit this file):
+
+```bash
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.xxxxx.mongodb.net/redeemSystem
+NEXTAUTH_SECRET=<your_generated_secret>
+NEXTAUTH_URL=https://unlock-rewards.vercel.app
+```
+
+---
+
+## ⚙️ Local Development Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/unlock-rewards.git
+cd unlock-rewards
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Create Environment File
+
+Copy `.env.local` (see above).
+
+### 4️⃣ Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will run on [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ☁️ Deployment (Vercel)
 
-## Learn More
+1. Push your code to a public GitHub repository.
+2. Go to [Vercel](https://vercel.com), click **New Project → Import Git Repository**.
+3. Configure Environment Variables:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   MONGODB_URI=
+   NEXTAUTH_SECRET=
+   NEXTAUTH_URL=https://<your-app>.vercel.app
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Click **Deploy** — done ✅
+   Vercel automatically detects Next.js and builds the project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧾 Evaluation Criteria (Stage 2 Alignment)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Requirement                               | Status         |
+| ----------------------------------------- | -------------- |
+| Two types of redeem codes (common/unique) | ✅ Implemented |
+| Redemption limits                         | ✅ Implemented |
+| Expiry handling                           | ✅ Implemented |
+| Redemption feedback                       | ✅ Implemented |
+| Admin dashboard (generate/view)           | ✅ Implemented |
+| MongoDB storage                           | ✅ Implemented |
+| Role-based access                         | ✅ Implemented |
+| NextAuth authentication                   | ✅ Implemented |
+| SSR-ready                                 | ✅ Supported   |
+| Clean modular code                        | ✅ Yes         |
+| Hosted on Vercel                          | ✅ Deployed    |
+| README + Demo credentials                 | ✅ Included    |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧰 Tools & Libraries
+
+- **bcryptjs** → Password hashing
+- **mongoose** → MongoDB ORM
+- **next-auth** → Authentication
+- **lucide-react** → Icons
+- **Tailwind CSS** → Styling
+- **shadcn/ui** → Reusable UI components
+- **React Hook Form / Context** → State management
+- **Vercel** → Deployment
